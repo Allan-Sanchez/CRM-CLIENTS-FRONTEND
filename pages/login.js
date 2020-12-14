@@ -62,7 +62,7 @@ const Login = () => {
           />
         </div>
         <div className="mt-8">
-          <button className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+          <button className="bg-blue-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
             Login
           </button>
         </div>
