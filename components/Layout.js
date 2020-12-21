@@ -1,35 +1,45 @@
 import Head from "next/head";
 import Sidebar from "./Sidebar";
-import {useRouter} from "next/router";
-
+import { useRouter } from "next/router";
+import Navbar from '../components/Navbar';
 const Layout = ({ children }) => {
-
   const router = useRouter();
 
-  console.log(router.pathname)
+  // console.log(router.pathname);
   return (
     <>
       <Head>
-        <title>CRM- Admin Clients</title>
+        <title>CRM-Admin Clients</title>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-          integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-          crossOrigin="anonymous"
         />
         <link
           rel="stylesheet"
           href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer', 'asdf');
+    `,
+          }}
+        />
       </Head>
-      {router.pathname === "/login" || router.pathname === "/register" ?(
+      {router.pathname === "/login" || router.pathname === "/register" ? (
         <div className="w-full bg-gray-300 h-screen pt-20">{children}</div>
-      ):(
-
-        <div className="min-h-screen flex flex-row bg-gray-100">
+      ) : (
+        <div className="min-h-screen flex flex-row">
           <Sidebar />
-  
-          <div>{children}</div>
+
+          <div className="w-full bg-gray-300">
+          <Navbar/>
+            {children}
+          </div>
         </div>
       )}
     </>
