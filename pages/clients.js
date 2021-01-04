@@ -4,6 +4,7 @@ import TableComponent from '../components/client/TableComponent';
 import { PushSpinner } from "react-spinners-kit";
 import {useRouter} from 'next/router'; 
 import Link from 'next/link'; 
+
 const GET_CLIENT = gql`
 query getClientsSeller{
   getClientsSeller{
