@@ -1,3 +1,5 @@
+import {formatDistanceToNow} from 'date-fns';
+
 const TableComponent = ({ title, body }) => {
   return (
     <table className="border-collapse w-full lg:mt-10 ">
@@ -23,19 +25,19 @@ const TableComponent = ({ title, body }) => {
               <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
                 {title[0]}
               </span>
-              {item.name}
+              {`${item.name} ${item.lastName}`}
             </td>
             <td className="w-full lg:w-auto p-3 text-gray-800  border border-b text-right sm:text-center block lg:table-cell relative lg:static">
               <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
                 {title[1]}
               </span>
-              {item.Email}
+              {item.email}
             </td>
             <td className="w-full lg:w-auto p-3 text-gray-800 border border-b text-right sm:text-center block lg:table-cell relative lg:static">
               <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
                 {title[2]}
               </span>
-              {item.created}
+              {formatDistanceToNow(new Date(item.createdAt))}
             </td>
             <td className="w-full lg:w-auto p-3 text-gray-800  border border-b text-right sm:text-center block lg:table-cell relative lg:static">
               <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase ">

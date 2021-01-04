@@ -20,18 +20,8 @@ const Navbar = () => {
           </div>
         </form>
       </div>
-      <div className="w-full sm:w-1/2 lg:w-1/4 flex items-center justify-end">
-        {/* <div className="px-4"> */}
-        <img
-          src="https://demos.creative-tim.com/tailwindcss-starter-project/_next/static/images/team-4-470x470-4ef82ef45a9598d24c4c951ead4d626a.png"
-          alt="..."
-          className="shadow-lg rounded-full h-10 align-middle border-none"
-        />
-        {/* </div> */}
-        <div className="px-2">
+     
           <Dropdown />
-        </div>
-      </div>
     </nav>
   );
 };
