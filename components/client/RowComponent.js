@@ -68,7 +68,6 @@ const RowComponent = ({ data, title }) => {
   };
 
   const handleEditClient = () =>{
-    console.log(id);
     Router.push({
       pathname:'/clients/edit/[id]',
       query:{

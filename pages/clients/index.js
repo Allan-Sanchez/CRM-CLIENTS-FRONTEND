@@ -28,12 +28,10 @@ const Clients = () => {
             )
           }
         if (!data.getClientsSeller) {
-          console.log('test');
           router.push('/login')
           // console.log(data.getClientsSeller);
           return null
         }
-        console.log(data.getClientsSeller)
       // } catch (error) {
       //   console.log(error);
       // }

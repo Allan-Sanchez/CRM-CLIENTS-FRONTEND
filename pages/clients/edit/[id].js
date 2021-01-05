@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
-import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery, useMutation } from "@apollo/client";
 import { PushSpinner } from "react-spinners-kit";
 import { Formik } from "formik";
 import * as yup from "yup";
+import Swal from 'sweetalert2';
 
 const GET_CLIENT_FOR_ID = gql`
   query getClient($id: ID!) {
@@ -17,6 +18,17 @@ const GET_CLIENT_FOR_ID = gql`
   }
 `;
 
+const UPDATE_CLIENT = gql`
+mutation updateClient($id: ID!, $input: ClientInput){
+  updateClient(id: $id,input: $input){
+    id
+    name
+    lastName
+    email
+  }
+}
+`;
+
 const EditClient = () => {
   const router = useRouter();
   const {
@@ -28,6 +40,8 @@ const EditClient = () => {
       id,
     },
   });
+  console.log(data);
+  const [updateClient] = useMutation(UPDATE_CLIENT);
 
   const validationSchemaUpdate = yup.object({
     name: yup.string().required("Name is required"),
@@ -44,7 +58,29 @@ const EditClient = () => {
       </div>
     );
   }
-  console.log(data);
+  // console.log(data);
+  const handleUpdateClient = async(values) => {
+    const {name,lastName, email, company, phone} = values;
+
+    try {
+      const {data} = await updateClient({
+        variables:{
+          id,
+          input:{
+            name,
+            lastName,
+            email,
+            company,
+            phone
+          }
+        }
+      });
+      Swal.fire("Updated!", `Client ${data.updateClient.name} updated successfully`, "success");
+      router.push('/clients')
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
@@ -58,7 +94,7 @@ const EditClient = () => {
             enableReinitialize
             initialValues={data.getClient}
             onSubmit={(values) => {
-              console.log(values);
+              handleUpdateClient(values);
             }}
           >
             {(props) => {
