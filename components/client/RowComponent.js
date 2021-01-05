@@ -1,6 +1,7 @@
 import { formatDistanceToNow } from "date-fns";
 import Swal from "sweetalert2";
 import { gql, useMutation } from "@apollo/client";
+import Router from 'next/router';
 
 const DELETE_CLIENT = gql`
   mutation deleteClient($id: ID!) {
@@ -23,6 +24,7 @@ const GET_CLIENT = gql`
 `;
 const RowComponent = ({ data, title }) => {
   const { name, lastName, email, createdAt, id } = data;
+  
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     update(cache) {
       //get cache
@@ -65,6 +67,16 @@ const RowComponent = ({ data, title }) => {
     });
   };
 
+  const handleEditClient = () =>{
+    console.log(id);
+    Router.push({
+      pathname:'/clients/edit/[id]',
+      query:{
+        id
+      }
+    })
+  }
+
   return (
     <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
       <td className="w-full lg:w-auto p-3 text-gray-800 text-right sm:text-center border border-b block lg:table-cell relative lg:static">
@@ -89,13 +101,13 @@ const RowComponent = ({ data, title }) => {
         <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase ">
           {title[3]}
         </span>
-        <a
-          href="#"
+        <button
+         onClick={() => handleEditClient()}
           className="text-gray-800 bg-green-300  hover:bg-green-400 py-2 px-3 rounded-2xl"
         >
           <span className="hidden sm:inline-block">Edit</span>
           <i className="bx bx-pencil md:ml-2"></i>
-        </a>
+        </button>
         <button
           className="text-gray-800  bg-red-300  hover:bg-red-400 py-2 px-3 rounded-2xl ml-2"
           onClick={() => handleDeleteClient(id)}

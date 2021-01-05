@@ -19,11 +19,11 @@ const CURRENT_USER = gql`
 const Dropdown = () => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
+  const router = useRouter();
+  const {loading,data} = useQuery(CURRENT_USER);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
   
-  const router = useRouter();
-
   const openDropdownPopover = () => {
     new Popper(btnDropdownRef.current, popoverDropdownRef.current, {
       placement: "bottom-start",
@@ -34,13 +34,11 @@ const Dropdown = () => {
     setDropdownPopoverShow(false);
   };
 
-    const {loading,data} = useQuery(CURRENT_USER);
   if (loading) {
     return (
       <PushSpinner size={30} color="#686769" loading={loading} />
     )
   }
-  console.log(loading);
     if(!data.getUser && !loading){
       //  return router.push('/login');
       return null;

@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useRouter } from "next/router";
 import { gql, useMutation } from "@apollo/client";
-import AlertMessage from "../../components/AlertMessage";
+import AlertMessage from "../../../components/AlertMessage";
 
 const NEW_CLIENT = gql`
   mutation newClient($input: ClientInput) {
@@ -124,7 +124,7 @@ const NewClient = () => {
               <span className="z-10 h-full leading-snug font-normal  text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
                 <i className="bx bxs-user"></i>
               </span>
-              {formik.errors.name ? (
+              {formik.touched.name && formik.errors.name ? (
                 <div className="py-2 bg-red-200 border-l-4 border-red-500 text-red-700 p-4 w-full">
                   <p className="font-bold">Error</p>
                   {/* <p>Lorem ipsum dolor sit amet.</p> */}
@@ -146,7 +146,7 @@ const NewClient = () => {
               <span className="z-10 h-full leading-snug font-normal  text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
                 <i className="bx bxs-user"></i>
               </span>
-              {formik.errors.lastName ? (
+              {formik.touched.lastName && formik.errors.lastName ? (
                 <div className="py-2 bg-red-200 border-l-4 border-red-500 text-red-700 p-4 w-full">
                   <p className="font-bold">Error</p>
                   <p>{formik.errors.lastName}</p>
@@ -167,7 +167,7 @@ const NewClient = () => {
               <span className="z-10 h-full leading-snug font-normal  text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
                 <i className="bx bxs-business"></i>
               </span>
-              {formik.errors.company ? (
+              {formik.touched.company && formik.errors.company ? (
                 <div className="py-2 bg-red-200 border-l-4 border-red-500 text-red-700 p-4 w-full">
                   <p className="font-bold">Error</p>
                   <p>{formik.errors.company}</p>
@@ -188,7 +188,7 @@ const NewClient = () => {
               <span className="z-10 h-full leading-snug font-normal  text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
                 <i className="bx bxs-envelope"></i>
               </span>
-              {formik.errors.email ? (
+              {formik.touched.email && formik.errors.email ? (
                 <div className="py-2 bg-red-200 border-l-4 border-red-500 text-red-700 p-4 w-full">
                   <p className="font-bold">Error</p>
                   <p>{formik.errors.email}</p>
@@ -209,7 +209,7 @@ const NewClient = () => {
               <span className="z-10 h-full leading-snug font-normal  text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
                 <i className="bx bxs-phone"></i>
               </span>
-              {formik.errors.phone ? (
+              {formik.touched.phone && formik.errors.phone ? (
                 <div className="py-2 bg-red-200 border-l-4 border-red-500 text-red-700 p-4 w-full">
                   <p className="font-bold">Error</p>
                   <p>{formik.errors.phone}</p>

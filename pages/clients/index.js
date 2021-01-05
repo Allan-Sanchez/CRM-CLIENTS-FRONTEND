@@ -1,6 +1,5 @@
 import {gql, useQuery} from '@apollo/client';
-import TableComponent from '../components/client/TableComponent';
-// import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import TableComponent from '../../components/client/TableComponent';
 import { PushSpinner } from "react-spinners-kit";
 import {useRouter} from 'next/router'; 
 import Link from 'next/link'; 
@@ -47,7 +46,7 @@ const Clients = () => {
         <h1 className="text-center font-bold text-4xl text-indigo-500 block">
           Clients
         </h1>
-        <Link href="/new/client">
+        <Link href="/clients/new/client">
         <button
           className="bg-blue-200 border border-gray-300 rounded-2xl text-indigo-800 active:bg-indigo-600 font-bold uppercase text-sm px-6 py-3 shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
           type="button"
