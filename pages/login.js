@@ -117,12 +117,12 @@ const Login = () => {
               <input
                 id="email"
                 className="bg-white text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:border-blue-500 focus:outline-none focus:ring"
-                type="email"
+                type="email" autoFocus
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
               />
-              {formik.errors.email ? (
+              {formik.touched.email && formik.errors.email ? (
                 <div className="py-2 bg-red-200 border-l-4 border-red-500 text-red-700 p-4 ">
                   <p className="font-bold">Error</p>
                   <p>{formik.errors.email}</p>
@@ -151,7 +151,7 @@ const Login = () => {
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
               />
-              {formik.errors.password ? (
+              {formik.touched.password && formik.errors.password ? (
                 <div className="py-2 bg-red-200 border-l-4 border-red-500 text-red-700 p-4 ">
                   <p className="font-bold">Error</p>
                   <p>{formik.errors.password}</p>

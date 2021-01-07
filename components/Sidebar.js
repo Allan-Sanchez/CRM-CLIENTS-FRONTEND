@@ -4,6 +4,11 @@ import { useRouter } from "next/router";
 const Sidebar = () => {
   const router = useRouter();
 
+  const logout = () =>{
+    localStorage.removeItem('token');
+    router.push('/login');
+  }
+
   return (
     <>
       <div className=" hidden sm:flex flex-col w-20 lg:w-72 bg-white rounded-r-3xl overflow-hidden min-w-sidebar">
@@ -137,7 +142,7 @@ const Sidebar = () => {
 
           <li>
             <a
-              href="#"
+              onClick={() => logout()}
               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
             >
               <span className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400">
