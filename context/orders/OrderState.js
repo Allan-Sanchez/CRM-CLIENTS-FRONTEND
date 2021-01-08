@@ -1,5 +1,5 @@
 import React,{useReducer} from 'react';
-import {GET_CLIENTS} from "../../types";
+import {GET_CLIENTS, GET_PRODUCTS} from "../../types";
 import OrderContext from './OrderContext';
 import OrderReducer from './OrderReducer';
 
@@ -18,9 +18,16 @@ const OrderState = ({children}) => {
             type:GET_CLIENTS,
             payload:client
         })
+    };
+
+    const getProductsState = (products) =>{
+        dispatch({
+            type:GET_PRODUCTS,
+            payload:products
+        })
     }
     return ( 
-        <OrderContext.Provider value={{getClientState}}>
+        <OrderContext.Provider value={{getClientState, getProductsState}}>
             {children}
         </OrderContext.Provider>
      );

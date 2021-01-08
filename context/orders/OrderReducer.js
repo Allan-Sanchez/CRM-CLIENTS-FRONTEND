@@ -1,4 +1,4 @@
-import {GET_CLIENTS} from "../../types";
+import {GET_CLIENTS, GET_PRODUCTS} from "../../types";
 
 const OrderReducer = (state,action) =>{
     switch (action.type) {
@@ -6,6 +6,11 @@ const OrderReducer = (state,action) =>{
             return{
                 ...state,
                 clients: action.payload
+            }
+        case GET_PRODUCTS:
+            return{
+                ...state,
+                products: action.payload
             }
         default:
             return state

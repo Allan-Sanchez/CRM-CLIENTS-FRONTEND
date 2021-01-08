@@ -4,26 +4,26 @@ import Select from "react-select";
 import { gql, useQuery } from "@apollo/client";
 import { PushSpinner } from "react-spinners-kit";
 
-const GET_CLIENTS = gql`
-  query getClientsSeller {
-    getClientsSeller {
-      id
-      name
-      lastName
-    }
+const GET_PRODUCTS = gql`
+query getProducts{
+  getProducts{
+    id
+    name
+    stock
+    price
+    createdAt
   }
+}
 `;
-
-
-const SelectClient = () => {
-  const [CurrentClient, setCurrentClient] = useState({});
+const SelectProduct = () => {
+  const [productSelected, setProductSelected] = useState([]);
   const orderContext = useContext(OrderContext);
-  const { getClientState } = orderContext;
+  const { getProductsState } = orderContext;
+  const { loading, data } = useQuery(GET_PRODUCTS);
 
   useEffect(() => {
-    getClientState(CurrentClient);
-  }, [CurrentClient]);
-  const { loading, data } = useQuery(GET_CLIENTS);
+    getProductsState(productSelected);
+  }, [productSelected]);
   
   if (loading) {
     return (
@@ -32,26 +32,27 @@ const SelectClient = () => {
       </div>
     );
   }
-  const {getClientsSeller} = data;
+  const {getProducts} = data;
 
   return (
     <>
       <div className="text-gray-500 border-l-4 border-gray-200 bg-white px-2 py-3 mb-2">
         <p className="text-gray-400 text-base">
-          <span className="font-bold text-indigo-500 mr-1">1.- </span>
-          Select a client to the order.
+          <span className="font-bold text-indigo-500 mr-1">2.- </span>
+          Add products at the order.
         </p>
         <Select
           className="mt-1"
-          options={getClientsSeller}
-          onChange={(option) => setCurrentClient(option)}
-          getOptionLabel={(options) => options.name}
+          options={getProducts}
+          isMulti={true}
+          onChange={(option) => setProductSelected(option)}
+          getOptionLabel={(options) => `${options.name} - ${options.stock} Available`}
           getOptionValue={(options) => options.id}
-          placeholder="Select Client"
+          placeholder="Select Products"
         />
       </div>
     </>
   );
 };
 
-export default SelectClient;
+export default SelectProduct;

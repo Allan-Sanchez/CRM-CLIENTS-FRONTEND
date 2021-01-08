@@ -1,4 +1,5 @@
 import SelectClient from "../../../components/orders/SelectClient";
+import SelectProduct from "../../../components/orders/SelectProduct";
 
 const Order = () => {
   return (
@@ -9,6 +10,7 @@ const Order = () => {
         </h1>
         <form>
         <SelectClient></SelectClient>
+        <SelectProduct></SelectProduct>
         </form>
       </div>
     </div>
