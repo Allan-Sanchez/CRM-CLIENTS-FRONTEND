@@ -24,9 +24,11 @@ const Clients = () => {
         const {data, loading} = useQuery(GET_CLIENT);
         if (loading) {
           return (
-            <PushSpinner size={30} color="#686769" loading={loading} />
-            )
-          }
+            <div className="absolute top-1/2 left-1/3 sm:left-1/2 ">
+              <PushSpinner size={50} color="#686769" loading={loading} />
+            </div>
+          );
+        }
         if (!data.getClientsSeller) {
           router.push('/login')
           // console.log(data.getClientsSeller);

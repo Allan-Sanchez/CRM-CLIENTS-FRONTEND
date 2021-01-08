@@ -1,17 +1,19 @@
 import "../styles/globals.css";
 import Layout from "../components/Layout";
-import { ApolloProvider } from '@apollo/client';
+import { ApolloProvider } from "@apollo/client";
 import client from "../config/apollo";
+import OrderState from "../context/orders/OrderState";
 
-// import "tailwindcss/tailwind.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     // <>
     <ApolloProvider client={client}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <OrderState>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </OrderState>
     </ApolloProvider>
     // </>
   );
