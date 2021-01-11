@@ -36,7 +36,7 @@ const SelectProduct = () => {
 
   return (
     <>
-      <div className="text-gray-500 border-l-4 border-gray-200 bg-white px-2 py-3 mb-2">
+      <div className="text-gray-500 border-l-4 border-gray-400 bg-white px-2 py-3 mb-2">
         <p className="text-gray-400 text-base">
           <span className="font-bold text-indigo-500 mr-1">2.- </span>
           Add products at the order.

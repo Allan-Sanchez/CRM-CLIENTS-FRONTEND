@@ -1,4 +1,4 @@
-import {GET_CLIENTS, GET_PRODUCTS} from "../../types";
+import {GET_CLIENTS, GET_PRODUCTS, UPDATE_PRODUCT_QTY} from "../../types";
 
 const OrderReducer = (state,action) =>{
     switch (action.type) {
@@ -11,6 +11,11 @@ const OrderReducer = (state,action) =>{
             return{
                 ...state,
                 products: action.payload
+            }
+        case UPDATE_PRODUCT_QTY:
+            return{
+                ...state,
+                products : state.products.map( product => product.id === action.payload.id ? product = action.payload : product)
             }
         default:
             return state

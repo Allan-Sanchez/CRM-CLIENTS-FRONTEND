@@ -2,6 +2,7 @@ import Link from 'next/link';
 import TableComponent from "../../components/products/TableComponent"
 import {gql,useQuery} from "@apollo/client"
 import { PushSpinner } from "react-spinners-kit";
+import {useRouter} from 'next/router';
 
 const GET_PRODUCTS = gql`
 query getProducts{
@@ -17,6 +18,7 @@ query getProducts{
 
 const Products = () => {
   const {loading,data} = useQuery(GET_PRODUCTS);
+  const  router = useRouter();
   const titleTable = ['Name','stock','price','Created','Actions'];
   
   if (loading) {
@@ -25,6 +27,10 @@ const Products = () => {
         <PushSpinner size={50} color="#686769" loading={loading} />
       </div>
     );
+  }
+  if(!data.getProducts){
+    router.push('/login');
+    return null
   }
   return (
     <div className="p-10 w-full min-w-full  flex flex-col justify-center">
