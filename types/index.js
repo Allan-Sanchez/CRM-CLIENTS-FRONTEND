@@ -1,3 +1,4 @@
 export const GET_CLIENTS = "GET_CLIENTS";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const UPDATE_PRODUCT_QTY ="UPDATE_PRODUCT_QTY";
+export const UPDATE_TOTAL ="UPDATE_TOTAL";

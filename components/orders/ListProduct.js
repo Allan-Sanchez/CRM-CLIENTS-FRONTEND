@@ -3,12 +3,13 @@ import OrderContext from '../../context/orders/OrderContext';
 
 const ListProduct = ({product}) => {
     const orderContext = useContext(OrderContext)
-    const {updateProductState} = orderContext;
+    const {updateProductState, updateTotal} = orderContext;
     const [quantity,setQuantity] = useState(1);
     const {name, price, id}=product;
 
     useEffect(() => {
         updateQuantity();
+        updateTotal();
     }, [quantity])
 
     const updateQuantity = () =>{
@@ -38,7 +39,7 @@ const ListProduct = ({product}) => {
           <span className="text-sm lg:text-base font-medium">Q {price}</span>
         </td>
         <td className="text-right">
-          <span className="text-sm lg:text-base font-medium">Q 20.00</span>
+          <span className="text-sm lg:text-base font-medium">{price * quantity}</span>
         </td>
       </tr>
      );
