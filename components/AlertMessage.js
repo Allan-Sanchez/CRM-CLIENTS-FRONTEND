@@ -1,6 +1,6 @@
 const AlertMessage = ({messageInfo}) => {
     return (
-      <div className=" absolute top-2 right-1/3 flex max-w-sm w-full mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+      <div className=" absolute top-2 right-0 lg:right-1/3 flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden">
         <div
           className={
             messageInfo.typeError === "Error"

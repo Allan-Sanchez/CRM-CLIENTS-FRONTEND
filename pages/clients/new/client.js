@@ -86,8 +86,6 @@ const NewClient = () => {
         });
         router.push("/clients");
       } catch (error) {
-        console.log(`${error} entro`);
-
         getMessage(true);
         getMessageInfo({
           typeError: "Error",
