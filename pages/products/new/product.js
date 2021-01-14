@@ -85,7 +85,7 @@ const Product = () => {
       <div className="sm:p-10 w-full min-w-full  flex justify-center">
         <div className="w-full sm:w-10/12 lg:w-1/2 bg-gray-100 p-10 rounded-xl">
           <h1 className="text-center font-bold text-4xl text-indigo-500 block mb-3">
-            New Client
+            New Product
           </h1>
           <form onSubmit={formik.handleSubmit}>
             <div className="relative flex w-full flex-wrap items-stretch mb-3">
@@ -159,7 +159,7 @@ const Product = () => {
                 type="submit"
                 style={{ transition: "all .15s ease" }}
               >
-                <i className="bx bxs-user mr-2"></i> New Client
+                <i className="bx bxs-user mr-2"></i> New Product
               </button>
             </div>
           </form>

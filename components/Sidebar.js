@@ -11,11 +11,11 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className=" hidden sm:flex flex-col w-20 lg:w-72 bg-white rounded-r-3xl overflow-hidden min-w-sidebar">
-        <div className="flex items-center justify-center h-20 shadow-md">
+      <div className=" hidden sm:flex flex-col w-20 lg:w-72 bg-white rounded-r-3xl overflow-hidden min-w-sidebar relative">
+        <div className="flex items-center justify-center h-20 shadow-md fixed sidebar-fix">
           <h1 className="text-3xl uppercase text-indigo-500">CRM</h1>
         </div>
-        <ul className="flex flex-col py-4">
+        <ul className="flex flex-col py-4  top-20 fixed w-60">
           <li>
             <Link href="/">
               <a
