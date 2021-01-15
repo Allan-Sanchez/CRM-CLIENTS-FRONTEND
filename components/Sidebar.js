@@ -40,31 +40,6 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/users">
-              <a
-                href="#"
-                className={`${
-                  router.pathname === "/users"
-                    ? "text-gray-800 translate-x-2 border-l-4 border-indigo-800"
-                    : ""
-                } flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800`}
-              >
-                <span
-                  className={` ${
-                    router.pathname === "/users"
-                      ? "text-gray-800 translate-x-2"
-                      : ""
-                  } inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400`}
-                >
-                  <i className="bx bx-user"></i>
-                </span>
-                <span className="hidden lg:inline-block text-sm font-medium">
-                  Users
-                </span>
-              </a>
-            </Link>
-          </li>
-          <li>
             <Link href="/orders">
               <a
                 href="#"
@@ -167,15 +142,7 @@ const Sidebar = () => {
             </Link>
           </li>
 
-          <li className={`${router.pathname === "/users" ? "border-indigo-500" : ""} px-4 py-1 border-b-4 `}>
-            <Link href="/users">
-              <a href="#">
-                <span className="text-2xl">
-                  <i className="bx bx-user"></i>
-                </span>
-              </a>
-            </Link>
-          </li>
+       
 
           <li className={`${router.pathname === "/orders" ? "border-indigo-500" : ""} px-4 py-1 border-b-4 `}>
             <Link href="/orders">
