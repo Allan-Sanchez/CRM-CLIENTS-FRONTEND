@@ -17,12 +17,31 @@ mutation newOrder($input: OrderInput){
   }
 }
 `;
+const GET_ORDERS = gql`
+  query getOrdersSeller{
+  getOrdersSeller{
+    id
+  }
+}
+`;
+
 
 const Order = () => {
   const orderContext = useContext(OrderContext);
   const [validateButton, setValidateButton] = useState(false);
   const { client, products, total } = orderContext;
-  const [newOrder] = useMutation(ADD_ORDER);
+  const [newOrder] = useMutation(ADD_ORDER,{
+    update(cache){
+      const {getOrdersSeller} = cache.readQuery({query:GET_ORDERS})
+
+      cache.writeQuery({
+        query:GET_ORDERS,
+        data:{
+          getOrdersSeller: [...getOrdersSeller, newOrder]
+        }
+      })
+    }
+  });
   const [message, getMessage] = useState(null);
   const [messageInfo, getMessageInfo] = useState({});
   const router = useRouter();
@@ -53,7 +72,7 @@ const Order = () => {
         }
       })
       router.push('/orders')
-      Swal.fire("Updated!", `Order Added successfully`, "success");
+      Swal.fire("Added!", `Order Added successfully`, "success");
     } catch (error) {
       getMessage(true);
         getMessageInfo({
