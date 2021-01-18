@@ -20,9 +20,23 @@ const Dropdown = () => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const router = useRouter();
-  const {loading,data} = useQuery(CURRENT_USER);
+  const {loading, data} = useQuery(CURRENT_USER);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
+  
+  if (loading) {
+    return (
+      <PushSpinner size={30} color="#686769" loading={loading} />
+      )
+    }
+    
+    if (!data.getUser) {      
+        router.push('/login');
+        return null;
+    }
+  
+  const {name, lastName} = data.getUser;
+
   
   const openDropdownPopover = () => {
     new Popper(btnDropdownRef.current, popoverDropdownRef.current, {
@@ -34,17 +48,6 @@ const Dropdown = () => {
     setDropdownPopoverShow(false);
   };
 
-  if (loading) {
-    return (
-      <PushSpinner size={30} color="#686769" loading={loading} />
-    )
-  }
-    if(!data.getUser && !loading){
-      //  return router.push('/login');
-      return null;
-    }
-  
-    const {name, lastName} = data.getUser;
 
   const logout = () =>{
     localStorage.removeItem('token');

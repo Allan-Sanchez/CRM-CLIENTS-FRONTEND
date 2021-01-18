@@ -46,8 +46,10 @@ const Login = () => {
             <PushSpinner size={30} color="#686769" loading={loading} />
             );
         }
+        setTimeout(() =>{
+          localStorage.setItem('token',data.loginUser.token);
+        },1000)
         
-      localStorage.setItem('token',data.loginUser.token);
        getMessage(true);
         getMessageInfo({
           typeError: "Success",
@@ -58,7 +60,7 @@ const Login = () => {
           getMessage(null);
           getMessageInfo({});
           router.push('/');
-        }, 2000);
+        }, 3000);
 
 
       } catch (error) {
