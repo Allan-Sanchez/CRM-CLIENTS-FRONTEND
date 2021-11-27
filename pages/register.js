@@ -1,8 +1,9 @@
 import { useState } from "react";
+import Link from "next/link";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useMutation, gql } from "@apollo/client";
-import {useRouter} from 'next/router';
+import { useRouter } from "next/router";
 
 const NEW_USER = gql`
   mutation newUser($input: UserInput) {
@@ -60,10 +61,8 @@ const Register = () => {
         setTimeout(() => {
           getMessage(null);
           getMessageInfo({});
-          router.push('/login');
+          router.push("/login");
         }, 3000);
-
-
       } catch (error) {
         getMessage(true);
         getMessageInfo({
@@ -82,7 +81,13 @@ const Register = () => {
   const AlertMessage = () => {
     return (
       <div className=" absolute top-2 right-1/3 flex max-w-sm w-full mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-        <div className={ messageInfo.typeError === "Error" ? "flex justify-center items-center w-12 bg-red-500" : "flex justify-center items-center w-12 bg-green-500" }>
+        <div
+          className={
+            messageInfo.typeError === "Error"
+              ? "flex justify-center items-center w-12 bg-red-500"
+              : "flex justify-center items-center w-12 bg-green-500"
+          }
+        >
           {messageInfo.typeError === "Error" ? (
             <svg
               className="h-6 w-6 fill-current text-white"
@@ -104,7 +109,13 @@ const Register = () => {
 
         <div className="-mx-3 py-2 px-4">
           <div className="mx-3">
-            <span className={messageInfo.typeError === "Error" ? "text-red-500 font-semibold" : "text-green-500 font-semibold"}>
+            <span
+              className={
+                messageInfo.typeError === "Error"
+                  ? "text-red-500 font-semibold"
+                  : "text-green-500 font-semibold"
+              }
+            >
               {messageInfo.typeError}
             </span>
             <p className="text-gray-600 text-sm">{messageInfo.message}!</p>
@@ -134,12 +145,11 @@ const Register = () => {
           <div className="mt-4 flex items-center justify-between">
             <span className="border-b w-1/5 lg:w-1/4"></span>
 
-            <a
-              href="#"
-              className="text-xs text-center text-gray-500 uppercase hover:underline"
-            >
-              Login
-            </a>
+            <Link href="/login">
+              <a className="text-xs text-center text-gray-500 uppercase hover:underline">
+                Login
+              </a>
+            </Link>
 
             <span className="border-b w-1/5 lg:w-1/4"></span>
           </div>
@@ -257,12 +267,11 @@ const Register = () => {
           <div className="mt-4 flex items-center justify-between">
             <span className="border-b w-1/5 md:w-1/4"></span>
 
-            <a
-              href="#"
-              className="text-xs text-gray-500 uppercase hover:underline"
-            >
-              or Login
-            </a>
+            <Link href="/login">
+              <a className="text-xs text-gray-500 uppercase hover:underline">
+                or Login
+              </a>
+            </Link>
 
             <span className="border-b w-1/5 md:w-1/4"></span>
           </div>

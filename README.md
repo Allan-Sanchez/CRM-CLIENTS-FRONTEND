@@ -1,30 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CRM
 
-## Getting Started
+## App Description
 
-First, run the development server:
+This is a complete crm which is divided in two repositories each the operation of the same one must have both each one has its description.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Functions that can be done with the cmd:
+* Login
+* Register
+* Dasboard with real time graphs
+* Create products
+* Create New Customers (these will be exclusive for each salesman)
+* Create an order
+* List of all orders
+* Ability to view order status (completed, pending, cancelled) * Possibility to view order status (completed, pending, cancelled)
+## Descripcion de la Aplicacion
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Este es un crm completo el cual esta divido en dos repositorios cada el funcionamiento del mismo deben tener ambos cada uno tiene su descripcion
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Funciones que se pueden hacer con el cmd:
+* Login
+* Register
+* Dasboard con graficas en tiempo real
+* Crear pruductos
+* Crear Nuevos Cliente(estos seran exclusivos para cada vendedor)
+* Crear una orden
+* Listado de todas las ordenes
+* Posivilidad de ver estado de la order (completado, pendiente, cancelado)
 
-## Learn More
+## Repositories
 
-To learn more about Next.js, take a look at the following resources:
+> CRM frontend
+https://github.com/Allan-Sanchez/CRM-CLIENTS-FRONTEND
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> CRM Backend
+https://github.com/Allan-Sanchez/backend-crm-graphql
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Techconlogi used
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-## Deploy on Vercel
+## Project Images
+![Home page](https://res.cloudinary.com/dx9n8tsyu/image/upload/f_auto,q_auto/v1637968004/react-proyect/screenshot-localhost_3000-2021.11.26-16_43_28_ckxsy7.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ | Order Form | Order List| 
+ |--------------|-------------| 
+|![Home page](https://res.cloudinary.com/dx9n8tsyu/image/upload/f_auto,q_auto/v1637968003/react-proyect/screenshot-localhost_3000-2021.11.26-16_44_40_nerids.png) | ![Home page](https://res.cloudinary.com/dx9n8tsyu/image/upload/f_auto,q_auto/v1637968003/react-proyect/screenshot-localhost_3000-2021.11.26-16_44_19_i3kpvk.png)
+|
+
+ | Product Form | Product List| 
+ |--------------|-------------| 
+|![Home page](https://res.cloudinary.com/dx9n8tsyu/image/upload/f_auto,q_auto/v1637968003/react-proyect/screenshot-localhost_3000-2021.11.26-16_46_00_ebzvjr.png) | ![Home page](https://res.cloudinary.com/dx9n8tsyu/image/upload/f_auto,q_auto/v1637968004/react-proyect/screenshot-localhost_3000-2021.11.26-16_45_00_refmbz.png)
+|
+
+ | Client Form | Client List| 
+ |--------------|-------------| 
+|![form client page](https://res.cloudinary.com/dx9n8tsyu/image/upload/f_auto,q_auto/v1637968004/react-proyect/screenshot-localhost_3000-2021.11.26-16_36_49_oafhtb.png) | ![client list page](https://res.cloudinary.com/dx9n8tsyu/image/upload/f_auto,q_auto/v1637968004/react-proyect/screenshot-localhost_3000-2021.11.26-16_45_16_simosx.png)
+|
+
+ Login
+![Login page](https://res.cloudinary.com/dx9n8tsyu/image/upload/f_auto,q_auto/v1637968004/react-proyect/screenshot-localhost_3000-2021.11.26-16_00_57_ghcdml.png) 
+
+

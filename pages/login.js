@@ -1,21 +1,21 @@
 import { useState } from "react";
+import Link from "next/link";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import {gql, useMutation} from '@apollo/client';
-import {useRouter} from 'next/router';
+import { gql, useMutation } from "@apollo/client";
+import { useRouter } from "next/router";
 import { PushSpinner } from "react-spinners-kit";
-import AlertMessage from "../components/AlertMessage"
+import AlertMessage from "../components/AlertMessage";
 
 const MUTATION_LOGIN = gql`
-mutation loginUser($input: LoginInput) {
-  loginUser(input: $input) {
-    token
+  mutation loginUser($input: LoginInput) {
+    loginUser(input: $input) {
+      token
+    }
   }
-}
-
 `;
 const Login = () => {
-  const router  = useRouter();
+  const router = useRouter();
   const [loginUser] = useMutation(MUTATION_LOGIN);
   const [message, getMessage] = useState(null);
   const [messageInfo, getMessageInfo] = useState({});
@@ -28,29 +28,26 @@ const Login = () => {
       email: yup.string().email("Invalid Email").required("Email is required"),
       password: yup.string().required("Password is required"),
     }),
-    onSubmit: async(values) => {
-
-      const {email, password} = values;
+    onSubmit: async (values) => {
+      const { email, password } = values;
       try {
-        const {data,loading} = await loginUser({
-          variables:{
-            input:{
+        const { data, loading } = await loginUser({
+          variables: {
+            input: {
               email,
-              password
-            }
-          }
+              password,
+            },
+          },
         });
 
         if (loading) {
-          return(
-            <PushSpinner size={30} color="#686769" loading={loading} />
-            );
+          return <PushSpinner size={30} color="#686769" loading={loading} />;
         }
-        setTimeout(() =>{
-          localStorage.setItem('token',data.loginUser.token);
-        },1000)
-        
-       getMessage(true);
+        setTimeout(() => {
+          localStorage.setItem("token", data.loginUser.token);
+        }, 1000);
+
+        getMessage(true);
         getMessageInfo({
           typeError: "Success",
           message: `login successfully`,
@@ -59,10 +56,8 @@ const Login = () => {
         setTimeout(() => {
           getMessage(null);
           getMessageInfo({});
-          router.push('/');
+          router.push("/");
         }, 3000);
-
-
       } catch (error) {
         getMessage(true);
         getMessageInfo({
@@ -80,7 +75,7 @@ const Login = () => {
 
   return (
     <>
-      {message ? (<AlertMessage messageInfo={messageInfo}/>) : null}
+      {message ? <AlertMessage messageInfo={messageInfo} /> : null}
       <div className="flex max-w-sm mx-auto bg-white rounded-lg shadow-lg overflow-hidden lg:max-w-4xl ">
         <div
           className="hidden lg:block lg:w-1/2 bg-cover bg-center"
@@ -99,12 +94,11 @@ const Login = () => {
           <div className="mt-4 flex items-center justify-between">
             <span className="border-b w-1/5 lg:w-1/4"></span>
 
-            <a
-              href="#"
-              className="text-xs text-center text-gray-500 uppercase hover:underline"
-            >
-              Login
-            </a>
+            <Link href="/register">
+              <a className="text-xs text-center text-gray-500 uppercase hover:underline">
+                Sign Up
+              </a>
+            </Link>
 
             <span className="border-b w-1/5 lg:w-1/4"></span>
           </div>
@@ -119,7 +113,8 @@ const Login = () => {
               <input
                 id="email"
                 className="bg-white text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:border-blue-500 focus:outline-none focus:ring"
-                type="email" autoFocus
+                type="email"
+                autoFocus
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
@@ -171,13 +166,11 @@ const Login = () => {
           </form>
           <div className="mt-4 flex items-center justify-between">
             <span className="border-b w-1/5 md:w-1/4"></span>
-
-            <a
-              href="#"
-              className="text-xs text-gray-500 uppercase hover:underline"
-            >
-              or sign up
-            </a>
+            <Link href="/register">
+              <a className="text-xs text-gray-500 uppercase hover:underline">
+                or sign up
+              </a>
+            </Link>
 
             <span className="border-b w-1/5 md:w-1/4"></span>
           </div>
